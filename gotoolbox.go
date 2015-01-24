@@ -1,15 +1,21 @@
 package main
 
 import (
-  "github.com/codegangsta/controller"
+  "fmt"
+  "net/http"
+  // "github.com/codegangsta/controller"
   "github.com/codegangsta/negroni"
   "github.com/gorilla/mux"
-  "gotoolbox/controllers"
+  // "gotoolbox/controllers"
 )
 
 func main() {
   r := mux.NewRouter()
-  r.Handle("/", controller.Action((*controllers.ApplicationController).Index))
+  r.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+    fmt.Fprintf(w, "Welcome to the home page!")
+  })
+
+  //controller.Action((*controllers.ApplicationController).Index))
 
   n := negroni.Classic()
   n.UseHandler(r)
