@@ -9,7 +9,7 @@
           "image": "registry.giantswarm.io/9elements/gotoolbox:latest",
           "ports": ["8080/tcp"],
           "domains": {
-            "currentweather-$9elements.gigantic.io": "8080"
+            "gotoolbox.gigantic.io": "8080"
           }
         }
       ]
