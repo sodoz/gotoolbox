@@ -1,0 +1,7 @@
+= content main
+  .layout
+    section.navigation ui-view="navigation"
+    section.content
+      div ui-view="header"
+      div ui-view="content"
+      div ui-view="footer"
