@@ -24,3 +24,7 @@ _testmain.go
 *.prof
 
 tmp
+
+.gobuild/
+release/
+gotoolbox
