@@ -32,7 +32,7 @@ func main() {
 
   r := mux.NewRouter()
   r.Handle("/", controller.Action((*controllers.ApplicationController).Index))
-  r.Handle("/auth/github/callback", controller.Action((*controllers.AuthController).Create))
+  r.Handle("/auth/{provider}/callback", controller.Action((*controllers.AuthController).Create))
   r.HandleFunc("/auth/{provider}", gothic.BeginAuthHandler)
 
   n := negroni.Classic()
