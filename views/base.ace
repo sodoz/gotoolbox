@@ -3,6 +3,7 @@ html lang=en
   head
     meta charset=utf-8
     title Go Toolbox
+    link href="/stylesheets/reset.css" media="all" rel="stylesheet"
     link href="/stylesheets/application.css" media="all" rel="stylesheet"
     script src="/javascripts/application.js"
   body
