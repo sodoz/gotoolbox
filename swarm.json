@@ -1,0 +1,18 @@
+{
+  "app_name": "gotoolbox",
+  "services": [
+    {
+      "service_name": "gotoolbox-service",
+      "components": [
+        {
+          "component_name": "webserver",
+          "image": "registry.giantswarm.io/9elements/gotoolbox:latest",
+          "ports": ["8080/tcp"],
+          "domains": {
+            "currentweather-$9elements.gigantic.io": "8080"
+          }
+        }
+      ]
+    }
+  ]
+}
