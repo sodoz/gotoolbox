@@ -28,3 +28,5 @@ tmp
 .gobuild/
 release/
 gotoolbox
+
+setup_environment
