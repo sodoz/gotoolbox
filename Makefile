@@ -25,9 +25,10 @@ deps: .gobuild
 	# git clone git@github.com:gophergala/gotoolbox.git $(PROJECT_PATH)/gotoolbox
 
 	# Fetch public packages
-	GOPATH=$(GOPATH) go get -d github.com/codegangsta/controller
-	GOPATH=$(GOPATH) go get -d github.com/codegangsta/negroni
-	GOPATH=$(GOPATH) go get -d github.com/gorilla/mux
+	#GOPATH=$(GOPATH) go get -d github.com/codegangsta/controller
+	#GOPATH=$(GOPATH) go get -d github.com/codegangsta/negroni
+	#GOPATH=$(GOPATH) go get -d github.com/gorilla/mux
+	#GOPATH=$(GOPATH) go get -d github.com/$(ORGANIZATION)/$(PROJECT)
 	GOPATH=$(GOPATH) go get -d github.com/$(ORGANIZATION)/$(PROJECT)
 
 $(PROJECT): $(SOURCE)

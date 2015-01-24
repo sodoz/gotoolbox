@@ -9,6 +9,16 @@ https://github.com/pilu/fresh - Reload the server everytime a go or ace file cha
 https://github.com/codegangsta/negroni - Express style middleware for go
 https://github.com/gorilla/mux - Router
 
+## Deployment via Docker
+
+### Building the image
+
+    docker build -t 9elements/gotoolbox .
+
+    docker run -p 8080:8080 -h gotoolbox -d 9elements/gotoolbox
+
+    docker run -p 8080:8080 -it --entrypoint=/bin/bash 9elements/gotoolbox -i
+
 ## License
 
 Go Toolbox is released under the [MIT License](http://www.opensource.org/licenses/MIT).
