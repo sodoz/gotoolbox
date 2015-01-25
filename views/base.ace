@@ -5,6 +5,7 @@ html lang=en
     title Go Toolbox
     link href="/stylesheets/normalize.css" rel="stylesheet"
     link href="/stylesheets/foundation.min.css" rel="stylesheet"
+    link href="/stylesheets/application.css" rel="stylesheet"
     script src="/javascripts/vendor/modernizr.js"
 
   body
@@ -28,6 +29,13 @@ html lang=en
 
 
     = yield main
+    footer.main-footer
+      div class="small-12 small-centered columns"
+        | The Go Toolbox is made with ♥ by
+        a href="http://9elements.com"
+          | 9elements
+        | in
+        img src="/images/bochum.png"
     script src="/javascripts/vendor/jquery.js"
     script src="/javascripts/foundation.min.js"
     script src="/javascripts/application.js"
