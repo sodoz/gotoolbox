@@ -17,6 +17,7 @@ https://github.com/jinzhu/gorm - Dealing with the database
 
 http://www.gorillatoolkit.org/pkg/schema - Parsing web forms
 
+https://github.com/yosssi/ace/ - For templates
 
 ## Deployment via Docker
 
