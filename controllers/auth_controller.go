@@ -47,3 +47,9 @@ func (controller *AuthController) Create() error {
   controller.Redirect("/", 200)
   return nil
 }
+
+func (controller *AuthController) Delete() error {
+  delete(controller.Session.Values, "currentUserId")
+  controller.Redirect("/", 200)
+  return nil
+}
