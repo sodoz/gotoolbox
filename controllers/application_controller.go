@@ -2,6 +2,7 @@ package controllers
 
 import (
   "github.com/codegangsta/controller"
+  "github.com/gophergala/gotoolbox/helpers"
   "github.com/gophergala/gotoolbox/models"
   . "github.com/gophergala/gotoolbox/services"
   "github.com/gorilla/sessions"
@@ -75,7 +76,7 @@ func (controller *ApplicationController) Render(template string, scope map[strin
   tpl, err := ace.Load("views/base", template, &ace.Options{
     DelimLeft:  "<%",
     DelimRight: "%>",
-  })
+    FuncMap:    helpers.FuncMap})
   if err != nil {
     return err
   }
