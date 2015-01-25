@@ -1,10 +1,29 @@
 = content main
-  h1 Go Toolbox
-  p Hello World!
-  <% range .Categories %>
-    li <% .Name %>
-  <% end %>
+  div class="small-12 small-centered columns"
+    h2 All Projects
+    div.category-filter
+      <% range .Categories %>
+        li <% .Name %>
+      <% end %>
 
-  <% range .Projects %>
-    li <% . %>
-  <% end %>
+    div.all-projects
+      table
+        thead
+          tr
+            th Name
+            th Category
+            th User
+            th Date
+        tbody
+          <% range .Projects %>
+            tr
+              td
+                a href=<% .Link %> target="_blank"
+                  <% .Name %>
+              td
+                <% .Name %>
+              td
+                <% .Name %>
+              td
+                <% DateFormat .CreatedAt %>
+          <% end %>
