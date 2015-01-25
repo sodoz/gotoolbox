@@ -21,7 +21,7 @@
                 a href=<% .Link %> target="_blank"
                   <% .Name %>
               td
-                <% .Name %>
+                <% .Category.Name %>
               td
                 <% .User.GitHubName %>
               td
