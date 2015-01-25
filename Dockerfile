@@ -1,10 +1,8 @@
-FROM busybox:ubuntu-14.04
+FROM golang
 
 ADD ./gotoolbox /usr/bin/
-ADD ./views /views
-ADD ./public /public
-
-RUN apt-get update -y && apt-get install —no-install-recommends -y -q  ca-certificates
+ADD ./views /go/views
+ADD ./public /go/public
 
 EXPOSE 8080
 
