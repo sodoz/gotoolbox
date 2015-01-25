@@ -4,12 +4,13 @@ import (
   "fmt"
   "github.com/gophergala/gotoolbox/models"
   "github.com/jinzhu/gorm"
-  _ "github.com/mattn/go-sqlite3"
+  _ "github.com/lib/pq"
+  "os"
 )
 
 func main() {
   fmt.Println("Seeding Database")
-  db, _ := gorm.Open("sqlite3", "gotoolbox.db")
+  db, _ := gorm.Open("postgres", os.Getenv("GOTOOLBOX_POSTGRES_URL"))
   db.LogMode(true)
 
   db.DB()
