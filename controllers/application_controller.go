@@ -22,7 +22,12 @@ func (controller *ApplicationController) GetCurrentUser() *models.User {
   currentUser := new(models.User)
   if currentUserId, ok := controller.Session.Values["currentUserId"]; ok {
     DB().First(currentUser, currentUserId)
-    return currentUser
+    // @TODO Whyyyyyyyyy???!?!?!?!?!?
+    if currentUser.Id == 0 {
+      return nil
+    } else {
+      return currentUser
+    }
   } else {
     return nil
   }
@@ -44,6 +49,15 @@ func (controller *ApplicationController) Index() error {
 
   var projects []models.Project
   DB().Order("created_at desc").Find(&projects)
+  for index, _ := range projects {
+    var category models.Category
+    DB().Model(&projects[index]).Related(&category, "CategoryId")
+    projects[index].Category = category
+
+    var user models.User
+    DB().Model(&projects[index]).Related(&user, "UserId")
+    projects[index].User = user
+  }
 
   scope := make(map[string]interface{})
   currentUser := controller.GetCurrentUser()
