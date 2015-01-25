@@ -7,14 +7,14 @@
       div class="row"
         div class="large-6 columns"
           label Name
-            input type="text" placeholder="Name of the project"
+            input type="text" name="name" placeholder="Name of the project"
         div class="large-6 columns"
           label Link
-            input type="text" placeholder="Link (including http://)"
+            input type="text" name="link" placeholder="Link (including http://)"
       div class="row"
         div class="large-12 columns"
           label Description
-            textarea placeholder="Brief Description"
+            textarea name="description" placeholder="Brief Description"
       div class="row"
         div class="large-3 columns"
           input type="submit" value="Save" class="button success expand"
