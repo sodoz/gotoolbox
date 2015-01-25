@@ -1,3 +1,6 @@
 = content main
   h1 Go Toolbox
   p Hello World!
+  <% range .Categories %>
+    li <% .Name %>
+  <% end %>

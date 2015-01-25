@@ -15,7 +15,7 @@ html lang=en
             a href="/" Go Toolbox
 
       section class="top-bar-section"
-        ul class="right"
+        ul
           li
             a href="/projects/new" Add a new project
           li

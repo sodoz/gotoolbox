@@ -38,8 +38,11 @@ func (controller *ApplicationController) Init(rw http.ResponseWriter, r *http.Re
 }
 
 func (controller *ApplicationController) Index() error {
+  var categories []models.Category
+  DB().Order("name asc").Find(&categories)
+
   scope := make(map[string]interface{})
-  scope["Msg"] = "Test Test Test"
+  scope["Categories"] = categories
 
   if err := controller.Render("views/inner", scope); err != nil {
     return err
