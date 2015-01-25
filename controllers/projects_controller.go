@@ -15,12 +15,18 @@ type ProjectsController struct {
 }
 
 func (controller *ProjectsController) New() error {
-  if currentUser := controller.GetCurrentUser(); currentUser == nil {
+  scope := make(map[string]interface{})
+
+  currentUser := controller.GetCurrentUser()
+  if currentUser == nil {
     return errors.New("You need to be authentictad to create a link")
   }
 
-  scope := make(map[string]interface{})
-  scope["Msg"] = "Test Test Test"
+  var categories []models.Category
+  DB().Order("name asc").Find(&categories)
+
+  scope["Categories"] = categories
+  scope["CurrentUser"] = currentUser
 
   if err := controller.Render("views/projects/new", scope); err != nil {
     return err

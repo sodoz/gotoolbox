@@ -42,6 +42,11 @@ func (controller *ApplicationController) Index() error {
   DB().Order("name asc").Find(&categories)
 
   scope := make(map[string]interface{})
+  currentUser := controller.GetCurrentUser()
+  if currentUser != nil {
+    scope["CurrentUser"] = currentUser
+  }
+
   scope["Categories"] = categories
 
   if err := controller.Render("views/inner", scope); err != nil {
