@@ -20,15 +20,7 @@ func main() {
       os.Getenv("GOTOOLBOX_GITHUB_SECRET"),
       os.Getenv("GOTOOLBOX_GITHUB_CALLBACK")),
   )
-  gothic.GetProviderName = func(request *http.Request) (string, error) {
-    vars := mux.Vars(request)
-    provider := vars["provider"]
-
-    if provider == "" {
-      return provider, errors.New("you must select a provider")
-    }
-    return provider, nil
-  }
+  gothic.GetProviderName = controllers.GetProviderNameForMux
 
   r := mux.NewRouter()
   r.Handle("/", controller.Action((*controllers.ApplicationController).Index))

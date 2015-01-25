@@ -12,16 +12,18 @@ type AuthController struct {
   ApplicationController
 }
 
-func (controller *AuthController) Create() error {
-  gothic.GetProviderName = func(request *http.Request) (string, error) {
-    vars := mux.Vars(request)
-    provider := vars["provider"]
+func GetProviderNameForMux(request *http.Request) (string, error) {
+  vars := mux.Vars(request)
+  provider := vars["provider"]
 
-    if provider == "" {
-      return provider, errors.New("you must select a provider")
-    }
-    return provider, nil
+  if provider == "" {
+    return provider, errors.New("you must select a provider")
   }
+  return provider, nil
+}
+
+func (controller *AuthController) Create() error {
+  gothic.GetProviderName = controllers.GetProviderNameForMux
 
   user, err := gothic.CompleteUserAuth(controller.ResponseWriter, controller.Request)
   if err != nil {
