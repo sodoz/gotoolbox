@@ -28,5 +28,6 @@ tmp
 .gobuild/
 release/
 gotoolbox
+gotoolbox.db
 
 setup_environment
