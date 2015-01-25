@@ -5,12 +5,12 @@
     ul
       li
         label Name
-        input type="text" name="project_name"
+        input type="text" name="name"
       li
         label Link
-        textarea name="project_description"
+        textarea name="description"
       li
         label Link
-        input type="text" name="project_link"
+        input type="text" name="link"
       li
         input type="submit"
