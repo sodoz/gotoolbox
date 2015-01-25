@@ -1,0 +1,16 @@
+= content main
+  h2 Create a new project
+
+  form action="/projects/" method="post"
+    ul
+      li
+        label Name
+        input type="text" name="project_name"
+      li
+        label Link
+        textarea name="project_description"
+      li
+        label Link
+        input type="text" name="project_link"
+      li
+        input type="submit"
