@@ -1,6 +1,7 @@
 package main
 
 import (
+  "fmt"
   "github.com/codegangsta/controller"
   "github.com/codegangsta/negroni"
   "github.com/gophergala/gotoolbox/controllers"
@@ -12,6 +13,13 @@ import (
 )
 
 func main() {
+  pwd, err := os.Getwd()
+  if err != nil {
+    fmt.Println(err)
+    os.Exit(1)
+  }
+  fmt.Println(pwd)
+
   goth.UseProviders(
     github.New(
       os.Getenv("GOTOOLBOX_GITHUB_KEY"),
