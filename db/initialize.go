@@ -15,7 +15,9 @@ func main() {
   db.DB()
 
   db.DropTableIfExists(&models.User{})
+  db.DropTableIfExists(&models.Project{})
 
   // create database
   db.AutoMigrate(&models.User{})
+  db.AutoMigrate(&models.Project{})
 }
