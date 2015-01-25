@@ -8,7 +8,6 @@ import (
   "github.com/gorilla/mux"
   "github.com/markbates/goth/gothic"
   "net/http"
-  "reflect"
 )
 
 type AuthController struct {
@@ -42,9 +41,9 @@ func (controller *AuthController) Create() error {
 
   DB().Where(models.User{GitHubID: u.UserID}).FirstOrCreate(&user)
 
-  fmt.Fprintln(controller.ResponseWriter, "Found a user")
-  fmt.Fprintln(controller.ResponseWriter, user)
-  fmt.Fprintln(controller.ResponseWriter, u)
-  fmt.Fprintln(controller.ResponseWriter, reflect.TypeOf(u))
+  // @TODO Go idiomatic Id vs. ID
+  controller.Session.Values["currentUserId"] = user.Id
+
+  controller.Redirect("/", 200)
   return nil
 }
