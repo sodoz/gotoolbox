@@ -4,3 +4,7 @@
   <% range .Categories %>
     li <% .Name %>
   <% end %>
+
+  <% range .Projects %>
+    li <% . %>
+  <% end %>

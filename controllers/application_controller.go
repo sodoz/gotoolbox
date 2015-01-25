@@ -41,6 +41,9 @@ func (controller *ApplicationController) Index() error {
   var categories []models.Category
   DB().Order("name asc").Find(&categories)
 
+  var projects []models.Project
+  DB().Order("created_at desc").Find(&projects)
+
   scope := make(map[string]interface{})
   currentUser := controller.GetCurrentUser()
   if currentUser != nil {
@@ -48,6 +51,7 @@ func (controller *ApplicationController) Index() error {
   }
 
   scope["Categories"] = categories
+  scope["Projects"] = projects
 
   if err := controller.Render("views/inner", scope); err != nil {
     return err
