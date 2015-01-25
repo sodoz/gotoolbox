@@ -18,10 +18,10 @@ html lang=en
         ul
           <% if .CurrentUser %>
             li
+              a href="/projects/new" Add a new project
+            li
               a href="/auth/logout" class="button alert expand" Logout
           <% else %>
-            li
-              a href="/projects/new" Add a new project
             li
               a href="/auth/github" class="button alert expand" Login with Github
           <% end %>
