@@ -39,6 +39,9 @@ func main() {
   projects := r.PathPrefix("/projects/").Subrouter()
   projects.Methods("POST").Handler(controller.Action((*controllers.ProjectsController).Create))
 
+  // @TODO handle that with the DELETE verb
+  r.Handle("/projects/{id}/delete", controller.Action((*controllers.ProjectsController).Delete))
+
   n := negroni.Classic()
   n.UseHandler(r)
   n.Run(":8080")
