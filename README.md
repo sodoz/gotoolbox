@@ -6,10 +6,15 @@ People who are kickstarting projects can see for every category which projects a
 ## Tools used
 
 https://github.com/pilu/fresh - Reload the server everytime a go or ace file changes
+
 https://github.com/codegangsta/negroni - Express style middleware for go
+
 https://github.com/gorilla/mux - Router
+
 https://github.com/markbates/goth/ - Authentication via OAuth
+
 https://github.com/jinzhu/gorm - Dealing with the database
+
 
 ## Deployment via Docker
 
