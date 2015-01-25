@@ -15,6 +15,8 @@ https://github.com/markbates/goth/ - Authentication via OAuth
 
 https://github.com/jinzhu/gorm - Dealing with the database
 
+http://www.gorillatoolkit.org/pkg/schema - Parsing web forms
+
 
 ## Deployment via Docker
 
