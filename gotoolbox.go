@@ -1,7 +1,6 @@
 package main
 
 import (
-  "errors"
   "github.com/codegangsta/controller"
   "github.com/codegangsta/negroni"
   "github.com/gophergala/gotoolbox/controllers"
@@ -9,7 +8,6 @@ import (
   "github.com/markbates/goth"
   "github.com/markbates/goth/gothic"
   "github.com/markbates/goth/providers/github"
-  "net/http"
   "os"
 )
 
