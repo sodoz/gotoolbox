@@ -10,16 +10,23 @@
             th Category
             th User
             th Date
+            th
         tbody
-          <% range .Projects %>
+          <% $CurrentUserId := .CurrentUser.Id %>
+          <% range $project := .Projects %>
             tr
               td
                 a href=<% .Link %> target="_blank"
-                  <% .Name %>
+                  <% $project.Name %>
               td
-                <% .Category.Name %>
+                <% $project.Category.Name %>
               td
-                <% .User.GitHubName %>
+                <% $project.User.GitHubName %>
               td
-                <% DateFormat .CreatedAt %>
+                <% DateFormat $project.CreatedAt %>
+              td
+                <% if eq $CurrentUserId $project.User.Id %>
+                  a href="/projects/<% $project.Id%>/edit" Edit&nbsp;|
+                  a href="/projects/<% $project.Id%>/delete" &nbsp; Delete
+                <% end %>
           <% end %>
