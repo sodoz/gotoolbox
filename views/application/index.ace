@@ -8,7 +8,7 @@
           tr
             th Name
             th Category
-            th User
+            th Submitted By
             th Date
             th
         tbody
@@ -26,7 +26,6 @@
                 <% DateFormat $project.CreatedAt %>
               td
                 <% if eq $CurrentUserId $project.User.Id %>
-                  a href="/projects/<% $project.Id%>/edit" Edit&nbsp;|
-                  a href="/projects/<% $project.Id%>/delete" &nbsp; Delete
+                  a href="/projects/<% $project.Id%>/delete" Delete
                 <% end %>
           <% end %>
