@@ -25,6 +25,11 @@ func main() {
   r.Handle("/auth/{provider}/callback", controller.Action((*controllers.AuthController).Create))
   r.HandleFunc("/auth/{provider}", gothic.BeginAuthHandler)
 
+  // links routes
+  r.Handle("/projects/new", controller.Action((*controllers.ProjectsController).New))
+  projects := r.PathPrefix("/projects/").Subrouter()
+  projects.Methods("POST").Handler(controller.Action((*controllers.ProjectsController).Create))
+
   n := negroni.Classic()
   n.UseHandler(r)
   n.Run(":8080")
