@@ -2,6 +2,8 @@ package controllers
 
 import (
   "github.com/codegangsta/controller"
+  "github.com/gophergala/gotoolbox/models"
+  . "github.com/gophergala/gotoolbox/services"
   "github.com/gorilla/sessions"
   "github.com/yosssi/ace"
   "net/http"
@@ -13,6 +15,16 @@ var sessionStore sessions.Store = sessions.NewCookieStore([]byte(AppSecret))
 type ApplicationController struct {
   controller.Base
   Session *sessions.Session
+}
+
+func (controller *ApplicationController) GetCurrentUser() *models.User {
+  currentUser := new(models.User)
+  if currentUserId, ok := controller.Session.Values["currentUserId"]; ok {
+    DB().First(currentUser, currentUserId)
+    return currentUser
+  } else {
+    return nil
+  }
 }
 
 func (controller *ApplicationController) Init(rw http.ResponseWriter, r *http.Request) error {

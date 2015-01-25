@@ -15,9 +15,8 @@ type ProjectsController struct {
 }
 
 func (controller *ProjectsController) New() error {
-  currentUser := models.User{}
-  if currentUserId, ok := controller.Session.Values["currentUserId"]; ok {
-    DB().First(&currentUser, currentUserId)
+  currentUser := controller.GetCurrentUser()
+  if currentUser != nil {
     fmt.Println("YO YO YO")
     fmt.Println(currentUser.GitHubEmail)
   }
