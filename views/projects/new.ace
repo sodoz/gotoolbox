@@ -1,16 +1,20 @@
 = content main
-  h2 Create a new project
-
-  form action="/projects/" method="post"
-    ul
-      li
-        label Name
-        input type="text" name="name"
-      li
-        label Link
-        textarea name="description"
-      li
-        label Link
-        input type="text" name="link"
-      li
-        input type="submit"
+  div class="small-12 small-centered columns"
+    form action="/projects/" method="post"
+      div class="row"
+        div class="large-12 columns"
+          h2 Create a new project
+      div class="row"
+        div class="large-6 columns"
+          label Name
+            input type="text" placeholder="Name of the project"
+        div class="large-6 columns"
+          label Link
+            input type="text" placeholder="Link (including http://)"
+      div class="row"
+        div class="large-12 columns"
+          label Description
+            textarea placeholder="Brief Description"
+      div class="row"
+        div class="large-3 columns"
+          input type="submit" value="Save" class="button success expand"
