@@ -18,6 +18,7 @@ func main() {
     fmt.Println(err)
     os.Exit(1)
   }
+  fmt.Println("Working directory:")
   fmt.Println(pwd)
 
   goth.UseProviders(
