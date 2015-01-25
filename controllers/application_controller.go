@@ -53,7 +53,7 @@ func (controller *ApplicationController) Index() error {
   scope["Categories"] = categories
   scope["Projects"] = projects
 
-  if err := controller.Render("views/inner", scope); err != nil {
+  if err := controller.Render("views/application/index", scope); err != nil {
     return err
   }
 
