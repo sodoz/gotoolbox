@@ -2,6 +2,7 @@ package controllers
 
 import (
   "errors"
+  "fmt"
   "github.com/gophergala/gotoolbox/models"
   . "github.com/gophergala/gotoolbox/services"
   "github.com/gorilla/schema"
@@ -51,6 +52,7 @@ func (controller *ProjectsController) Create() error {
     return err
   }
   project.UserId = currentUser.Id
+  fmt.Println("Thaaaa user id", currentUser.Id)
 
   DB().Save(project)
 
