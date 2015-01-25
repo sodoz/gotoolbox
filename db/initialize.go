@@ -33,4 +33,25 @@ func main() {
 
   json := models.Category{Name: "JSON", Description: "JSON Parsing"}
   db.Save(&json)
+
+  kvs := models.Category{Name: "Key Value Stores", Description: "Key Value Stores"}
+  db.Save(&kvs)
+
+  orm := models.Category{Name: "ORM", Description: "Object relational mapping"}
+  db.Save(&orm)
+
+  te := models.Category{Name: "Template Engines", Description: "Template Engines"}
+  db.Save(&te)
+
+  ff := models.Category{Name: "File Formats", Description: "File Formats"}
+  db.Save(&ff)
+
+  cx := models.Category{Name: "Compression", Description: "Compression"}
+  db.Save(&cx)
+
+  oauth := models.Category{Name: "OAuth", Description: "OAuth"}
+  db.Save(&oauth)
+
+  crypto := models.Category{Name: "Crypto", Description: "Crypto"}
+  db.Save(&crypto)
 }
