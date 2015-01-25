@@ -16,10 +16,16 @@ html lang=en
 
       section class="top-bar-section"
         ul
-          li
-            a href="/projects/new" Add a new project
-          li
-            a href="/auth/github" class="button alert expand" Login with Github
+          <% if .CurrentUser %>
+            li
+              a href="/auth/logout" class="button alert expand" Logout
+          <% else %>
+            li
+              a href="/projects/new" Add a new project
+            li
+              a href="/auth/github" class="button alert expand" Login with Github
+          <% end %>
+
 
     = yield main
     script src="/javascripts/vendor/jquery.js"
