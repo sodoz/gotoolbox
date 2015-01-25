@@ -13,4 +13,6 @@ type User struct {
 
   CreatedAt time.Time `json:"createdAt"`
   UpdatedAt time.Time `json:"updatedAt"`
+
+  Projects []Project `json:"projects"`
 }
