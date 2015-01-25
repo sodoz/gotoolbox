@@ -1,6 +1,7 @@
 package controllers
 
 import (
+  "fmt"
   "github.com/gophergala/gotoolbox/models"
   . "github.com/gophergala/gotoolbox/services"
   "github.com/gorilla/schema"
@@ -14,6 +15,13 @@ type ProjectsController struct {
 }
 
 func (controller *ProjectsController) New() error {
+  currentUser := models.User{}
+  if currentUserId, ok := controller.Session.Values["currentUserId"]; ok {
+    DB().First(&currentUser, currentUserId)
+    fmt.Println("YO YO YO")
+    fmt.Println(currentUser.GitHubEmail)
+  }
+
   scope := make(map[string]interface{})
   scope["Msg"] = "Test Test Test"
 
