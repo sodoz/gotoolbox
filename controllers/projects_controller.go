@@ -2,7 +2,6 @@ package controllers
 
 import (
   "errors"
-  "fmt"
   "github.com/gophergala/gotoolbox/models"
   . "github.com/gophergala/gotoolbox/services"
   "github.com/gorilla/mux"
@@ -54,9 +53,9 @@ func (controller *ProjectsController) Create() error {
     return err
   }
   project.UserId = currentUser.Id
-  fmt.Println("Thaaaa user id", currentUser.Id)
-
-  DB().Save(project)
+  if project.Validate() {
+    DB().Save(project)
+  }
 
   controller.Redirect("/", 200)
   return nil
