@@ -23,7 +23,7 @@ func GetProviderNameForMux(request *http.Request) (string, error) {
 }
 
 func (controller *AuthController) Create() error {
-  gothic.GetProviderName = controllers.GetProviderNameForMux
+  gothic.GetProviderName = GetProviderNameForMux
 
   user, err := gothic.CompleteUserAuth(controller.ResponseWriter, controller.Request)
   if err != nil {
