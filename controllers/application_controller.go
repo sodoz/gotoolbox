@@ -18,22 +18,26 @@ func (controller *ApplicationController) Index() error {
   scope := make(map[string]interface{})
   scope["Msg"] = "Test Test Test"
 
-  controller.Render("views/inner", scope)
+  if err := controller.Render("views/inner", scope); err != nil {
+    return err
+  }
 
   return nil
 }
 
-func (controller *ApplicationController) Render(template string, scope map[string]interface{}) {
+func (controller *ApplicationController) Render(template string, scope map[string]interface{}) error {
   tpl, err := ace.Load("views/base", template, &ace.Options{
     DelimLeft:  "<%",
     DelimRight: "%>",
   })
   if err != nil {
-    http.Error(controller.ResponseWriter, err.Error(), http.StatusInternalServerError)
+    return err
   }
   if err := tpl.Execute(controller.ResponseWriter, scope); err != nil {
-    http.Error(controller.ResponseWriter, err.Error(), http.StatusInternalServerError)
+    return err
   }
+
+  return nil
 }
 
 func (controller *ApplicationController) Redirect(url string, status int) {
