@@ -1,10 +1,6 @@
 = content main
   div class="small-12 small-centered columns"
     h2 All Projects
-    div.category-filter
-      <% range .Categories %>
-        li <% .Name %>
-      <% end %>
 
     div.all-projects
       table
