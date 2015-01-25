@@ -23,7 +23,7 @@
               td
                 <% .Name %>
               td
-                <% .Name %>
+                <% .User.GitHubName %>
               td
                 <% DateFormat .CreatedAt %>
           <% end %>
