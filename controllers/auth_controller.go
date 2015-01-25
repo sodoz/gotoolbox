@@ -4,6 +4,7 @@ import (
   "errors"
   "fmt"
   "github.com/gophergala/gotoolbox/models"
+  . "github.com/gophergala/gotoolbox/services"
   "github.com/gorilla/mux"
   "github.com/markbates/goth/gothic"
   "net/http"
@@ -33,7 +34,13 @@ func (controller *AuthController) Create() error {
     return err
   }
 
-  user := models.User{GitHubEmail: u.Email, GitHubName: u.Name, GitHubID: u.UserID, GitHubAvatarURL: u.AvatarURL, GitHubAccessToken: u.AccessToken}
+  user := models.User{GitHubEmail: u.Email,
+    GitHubName:        u.Name,
+    GitHubID:          u.UserID,
+    GitHubAvatarURL:   u.AvatarURL,
+    GitHubAccessToken: u.AccessToken}
+
+  DB().Where(models.User{GitHubID: u.UserID}).FirstOrCreate(&user)
 
   fmt.Fprintln(controller.ResponseWriter, "Found a user")
   fmt.Fprintln(controller.ResponseWriter, user)
