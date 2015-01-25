@@ -10,6 +10,7 @@ type User struct {
   GitHubID          string `json:"gitHubId"`
   GitHubAvatarURL   string `json:"gitHubAvatarUrl"`
   GitHubAccessToken string `json:",omitempty"`
+  Admin             bool   `json:",omitempty"`
 
   CreatedAt time.Time `json:"createdAt"`
   UpdatedAt time.Time `json:"updatedAt"`
