@@ -12,5 +12,8 @@ type Project struct {
   CreatedAt time.Time `json:"createdAt",schema:"createdAt"`
   UpdatedAt time.Time `json:"updatedAt",schema:"updatedAt"`
 
-  UserId int64 `json:"userId,schema:-"`
+  User       User
+  UserId     int64 `json:"userId,schema:-"`
+  Category   Category
+  CategoryId int64 `json:"categoryId,schema:-"`
 }

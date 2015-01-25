@@ -10,4 +10,6 @@ type Category struct {
 
   CreatedAt time.Time `json:"createdAt",schema:"createdAt"`
   UpdatedAt time.Time `json:"updatedAt",schema:"updatedAt"`
+
+  Projects []Project `json:"projects"`
 }
