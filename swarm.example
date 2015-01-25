@@ -10,6 +10,12 @@
           "ports": ["8080/tcp"],
           "domains": {
             "gotoolbox.gigantic.io": "8080"
+          },
+          "env": {
+            "GOTOOLBOX_GITHUB_KEY": "...",
+            "GOTOOLBOX_GITHUB_SECRET": "...",
+            "GOTOOLBOX_GITHUB_CALLBACK": "...",
+            "GOTOOLBOX_POSTGRES_URL": "..."
           }
         }
       ]
