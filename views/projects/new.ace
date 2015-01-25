@@ -13,6 +13,13 @@
             input type="text" name="link" placeholder="Link (including http://)"
       div class="row"
         div class="large-12 columns"
+          label Category
+            select name="categoryId"
+              <% range .Categories %>
+                option value=<% .Id %> <% .Name %>
+              <% end %>
+      div class="row"
+        div class="large-12 columns"
           label Description
             textarea name="description" placeholder="Brief Description"
       div class="row"
