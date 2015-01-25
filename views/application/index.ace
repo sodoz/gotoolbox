@@ -25,7 +25,9 @@
               td
                 <% DateFormat $project.CreatedAt %>
               td
-                <% if eq $CurrentUserId $project.User.Id %>
-                  a href="/projects/<% $project.Id%>/delete" Delete
+                <% if $CurrentUserId %>
+                  <% if eq $CurrentUserId $project.User.Id %>
+                    a href="/projects/<% $project.Id%>/delete" Delete
+                  <% end %>
                 <% end %>
           <% end %>
