@@ -1,7 +1,7 @@
 package controllers
 
 import (
-  "fmt"
+  "errors"
   "github.com/gophergala/gotoolbox/models"
   . "github.com/gophergala/gotoolbox/services"
   "github.com/gorilla/schema"
@@ -15,10 +15,8 @@ type ProjectsController struct {
 }
 
 func (controller *ProjectsController) New() error {
-  currentUser := controller.GetCurrentUser()
-  if currentUser != nil {
-    fmt.Println("YO YO YO")
-    fmt.Println(currentUser.GitHubEmail)
+  if currentUser := controller.GetCurrentUser(); currentUser == nil {
+    return errors.New("You need to be authentictad to create a link")
   }
 
   scope := make(map[string]interface{})
@@ -32,6 +30,12 @@ func (controller *ProjectsController) New() error {
 }
 
 func (controller *ProjectsController) Create() error {
+  currentUser := controller.GetCurrentUser()
+
+  if currentUser == nil {
+    return errors.New("You need to be authentictad to create a link")
+  }
+
   if err := controller.Request.ParseForm(); err != nil {
     return err
   }
@@ -40,6 +44,7 @@ func (controller *ProjectsController) Create() error {
   if err := formDecoder.Decode(project, controller.Request.PostForm); err != nil {
     return err
   }
+  project.UserId = currentUser.Id
 
   DB().Save(project)
 
