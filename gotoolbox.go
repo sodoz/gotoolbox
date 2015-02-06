@@ -30,7 +30,7 @@ func main() {
   gothic.GetProviderName = controllers.GetProviderNameForMux
 
   r := mux.NewRouter()
-  r.Handle("/", controller.Action((*controllers.ApplicationController).Index))
+  r.Handle("/", controller.Action((*controllers.LandingpageController).Index))
   r.Handle("/auth/{provider}/callback", controller.Action((*controllers.AuthController).Create))
   r.Handle("/auth/logout", controller.Action((*controllers.AuthController).Delete))
   r.HandleFunc("/auth/{provider}", gothic.BeginAuthHandler)

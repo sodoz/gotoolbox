@@ -43,38 +43,6 @@ func (controller *ApplicationController) Init(rw http.ResponseWriter, r *http.Re
   return controller.Base.Init(rw, r)
 }
 
-func (controller *ApplicationController) Index() error {
-  var categories []models.Category
-  DB().Order("name asc").Find(&categories)
-
-  var projects []models.Project
-  DB().Order("created_at desc").Find(&projects)
-  for index, _ := range projects {
-    var category models.Category
-    DB().Model(&projects[index]).Related(&category, "CategoryId")
-    projects[index].Category = category
-
-    var user models.User
-    DB().Model(&projects[index]).Related(&user, "UserId")
-    projects[index].User = user
-  }
-
-  scope := make(map[string]interface{})
-  currentUser := controller.GetCurrentUser()
-  if currentUser != nil {
-    scope["CurrentUser"] = currentUser
-  }
-
-  scope["Categories"] = categories
-  scope["Projects"] = projects
-
-  if err := controller.Render("views/application/index", scope); err != nil {
-    return err
-  }
-
-  return nil
-}
-
 func (controller *ApplicationController) saveSession() error {
   if err := controller.Session.Save(controller.Request, controller.ResponseWriter); err != nil {
     return err
@@ -84,10 +52,14 @@ func (controller *ApplicationController) saveSession() error {
 }
 
 func (controller *ApplicationController) Render(template string, scope map[string]interface{}) error {
+  return controller.RenderWithLayout(template, "views/layout", scope)
+}
+
+func (controller *ApplicationController) RenderWithLayout(template string, layout string, scope map[string]interface{}) error {
   // better put this into action handler
   controller.saveSession()
 
-  tpl, err := ace.Load("views/base", template, &ace.Options{
+  tpl, err := ace.Load(layout, template, &ace.Options{
     DelimLeft:  "<%",
     DelimRight: "%>",
     FuncMap:    helpers.FuncMap})
